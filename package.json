@@ -1,0 +1,16 @@
+{
+  "name": "campus-lost-and-found",
+  "version": "1.0.0",
+  "description": "Campus Lost & Found – Verified Item Recovery Platform",
+  "private": true,
+  "scripts": {
+    "dev": "node node_modules/concurrently/dist/bin/concurrently.js \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "dev:server": "npm run dev --prefix server",
+    "dev:client": "npm run dev --prefix client",
+    "seed": "npm run seed --prefix server",
+    "build": "npm run build --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
