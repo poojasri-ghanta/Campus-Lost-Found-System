@@ -21,8 +21,6 @@ const startServer = async () => {
     if (userCount === 0) {
       console.log('[Server] Database is empty. Bootstrapping realistic campus seed data...');
       try {
-        const { MongoMemoryServer } = require('mongodb-memory-server');
-        // Run seed function directly
         const seedModule = require('./seed/seedDataDirect');
         if (seedModule?.seedDataDirect) {
           await seedModule.seedDataDirect();
@@ -32,11 +30,13 @@ const startServer = async () => {
       }
     }
 
-    app.listen(PORT, () => {
+    const HOST = '0.0.0.0';
+    app.listen(PORT, HOST, () => {
       console.log(`====================================================`);
       console.log(` Campus Lost & Found Backend Server`);
-      console.log(` Running on port: http://localhost:${PORT}`);
-      console.log(` API Endpoint:    http://localhost:${PORT}/api/health`);
+      console.log(` Running on:      http://${HOST}:${PORT}`);
+      console.log(` Environment:     ${process.env.NODE_ENV || 'development'}`);
+      console.log(` API Health:      http://${HOST}:${PORT}/api/health`);
       console.log(`====================================================`);
     });
   } catch (err) {
