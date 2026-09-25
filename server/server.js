@@ -10,10 +10,11 @@ const { connectDB } = require('./config/db');
 const User = require('./models/User');
 
 const PORT = process.env.PORT || 5000;
+const HOST = '0.0.0.0';
 
 const startServer = async () => {
   try {
-    // Connect to MongoDB (or auto in-memory fallback)
+    // Connect to MongoDB (strictly requires MONGO_URI in production)
     await connectDB();
 
     // Auto-seed if database is fresh / empty
@@ -30,17 +31,17 @@ const startServer = async () => {
       }
     }
 
-    const HOST = '0.0.0.0';
     app.listen(PORT, HOST, () => {
       console.log(`====================================================`);
       console.log(` Campus Lost & Found Backend Server`);
       console.log(` Running on:      http://${HOST}:${PORT}`);
+      console.log(` Port:            ${PORT}`);
       console.log(` Environment:     ${process.env.NODE_ENV || 'development'}`);
       console.log(` API Health:      http://${HOST}:${PORT}/api/health`);
       console.log(`====================================================`);
     });
   } catch (err) {
-    console.error(`Failed to start server:`, err);
+    console.error(`[Server] Failed to start server:`, err);
     process.exit(1);
   }
 };

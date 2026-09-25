@@ -7,10 +7,14 @@ yarn-error.log*
 
 # Environment & Credentials
 .env
-.env.local
-.env.*.local
+.env.*
+!.env.example
 server/.env
+server/.env.*
+!server/.env.example
 client/.env
+client/.env.*
+!client/.env.example
 
 # Build outputs
 dist/
