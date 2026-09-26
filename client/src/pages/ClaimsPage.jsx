@@ -5,6 +5,7 @@ import { StatusBadge, ConfidenceBadge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
 import { EmptyState } from '../components/common/EmptyState';
+import { Item3DIcon } from '../components/common/Item3DIcon';
 import { formatDate } from '../utils/formatters';
 import api from '../services/api';
 
@@ -34,10 +35,10 @@ export const ClaimsPage = () => {
     <div className="space-y-6 pb-12">
       {/* Header */}
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+        <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
           Ownership Claims & Verification
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-cocoa-600 mt-1">
           Track the status of your submitted ownership verification questionnaires
         </p>
       </div>
@@ -60,7 +61,7 @@ export const ClaimsPage = () => {
             return (
               <div
                 key={claim._id}
-                className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-soft hover:shadow-card transition-all flex flex-col justify-between space-y-4"
+                className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-6 shadow-warm hover:shadow-warm-lg transition-all flex flex-col justify-between space-y-4 card-hover-lift"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
@@ -71,22 +72,26 @@ export const ClaimsPage = () => {
                     />
                   </div>
 
-                  <h3 className="text-base font-bold text-slate-900 line-clamp-1">
-                    {found.title || 'Found Item'}
-                  </h3>
-
-                  <p className="text-xs text-slate-500 mt-1">
-                    Found at {found.location} • {formatDate(found.foundDate)}
-                  </p>
+                  <div className="flex items-start gap-3.5">
+                    <Item3DIcon category={found.category} size="sm" />
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-base font-bold text-charcoal-900 line-clamp-1 font-display">
+                        {found.title || 'Found Item'}
+                      </h3>
+                      <p className="text-xs text-cocoa-500 mt-0.5">
+                        Found at {found.location} • {formatDate(found.foundDate)}
+                      </p>
+                    </div>
+                  </div>
 
                   {/* Clarification alert if more info needed */}
                   {claim.status === 'MORE_INFORMATION_REQUIRED' && (
-                    <div className="mt-3 p-3 rounded-xl bg-purple-50 border border-purple-200 text-xs text-purple-900 space-y-1">
-                      <div className="flex items-center gap-1.5 font-bold">
-                        <HelpCircle className="w-4 h-4 text-purple-600" />
+                    <div className="mt-3 p-3.5 rounded-2xl bg-amber-50 border border-amber-200/80 text-xs text-amber-950 space-y-1">
+                      <div className="flex items-center gap-1.5 font-bold font-display text-amber-900">
+                        <HelpCircle className="w-4 h-4 text-amber-600" />
                         Action Required
                       </div>
-                      <p className="text-[11px] text-purple-700">
+                      <p className="text-[11px] text-amber-800">
                         {claim.moreInfoRequestedQuestion || 'Finder requested additional details.'}
                       </p>
                     </div>
@@ -94,20 +99,20 @@ export const ClaimsPage = () => {
 
                   {/* Approved alert */}
                   {claim.status === 'APPROVED' && (
-                    <div className="mt-3 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 space-y-1">
-                      <div className="flex items-center gap-1.5 font-bold">
-                        <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                    <div className="mt-3 p-3.5 rounded-2xl bg-olive-50 border border-olive-200/80 text-xs text-olive-950 space-y-1 shadow-warm-sm">
+                      <div className="flex items-center gap-1.5 font-bold font-display text-olive-900">
+                        <ShieldCheck className="w-4 h-4 text-olive-600" />
                         Ownership Verified!
                       </div>
-                      <p className="text-[11px] text-emerald-700">
-                        Proceed to schedule your campus handover.
+                      <p className="text-[11px] text-olive-800">
+                        Proceed to schedule your campus handover meetup.
                       </p>
                     </div>
                   )}
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="text-[11px] text-slate-400">
+                <div className="pt-3 border-t border-biscuit-200/70 flex items-center justify-between">
+                  <span className="text-[11px] text-cocoa-400">
                     Submitted {formatDate(claim.createdAt)}
                   </span>
                   <Link to={`/claims/${claim._id}`}>

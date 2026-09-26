@@ -35,10 +35,10 @@ export const AdminAnalyticsPage = () => {
   return (
     <div className="space-y-8 pb-12">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+        <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
           Campus Recovery Analytics & Telemetry
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-cocoa-600 mt-1">
           Aggregated reporting distributions across departments, campus building zones, and categories
         </p>
       </div>
@@ -46,13 +46,13 @@ export const AdminAnalyticsPage = () => {
       {/* Grid of Visual Analytics Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Found Items by Category */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-soft space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-            <h3 className="text-base font-bold text-slate-900 font-heading flex items-center gap-2">
-              <Package className="w-5 h-5 text-emerald-600" />
+        <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-6 sm:p-8 shadow-warm space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-biscuit-200/70">
+            <h3 className="text-base font-bold text-charcoal-900 font-display flex items-center gap-2">
+              <Package className="w-5 h-5 text-olive-700" />
               Found Items by Category
             </h3>
-            <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-lg">
+            <span className="text-xs font-bold text-olive-800 bg-olive-100 px-3 py-1 rounded-full font-display">
               Recovered Distribution
             </span>
           </div>
@@ -65,12 +65,12 @@ export const AdminAnalyticsPage = () => {
               return (
                 <div key={cat._id} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-slate-800">{cat._id}</span>
-                    <span className="font-bold text-slate-900 font-mono">{cat.count} items</span>
+                    <span className="font-semibold text-charcoal-800">{cat._id}</span>
+                    <span className="font-bold text-charcoal-900 font-mono">{cat.count} items</span>
                   </div>
-                  <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="w-full h-3 bg-cream-100 rounded-full overflow-hidden border border-biscuit-200/60">
                     <div
-                      className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full transition-all duration-700"
+                      className="h-full bg-gradient-to-r from-olive-600 to-terracotta-500 rounded-full transition-all duration-700 shadow-warm-sm"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -81,13 +81,13 @@ export const AdminAnalyticsPage = () => {
         </div>
 
         {/* Top Campus Lost/Found Hotspots */}
-        <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-soft space-y-6">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-            <h3 className="text-base font-bold text-slate-900 font-heading flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-indigo-600" />
+        <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-6 sm:p-8 shadow-warm space-y-6">
+          <div className="flex items-center justify-between pb-3 border-b border-biscuit-200/70">
+            <h3 className="text-base font-bold text-charcoal-900 font-display flex items-center gap-2">
+              <MapPin className="w-5 h-5 text-terracotta-600" />
               Top Campus Recovery Hotspots
             </h3>
-            <span className="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-lg">
+            <span className="text-xs font-bold text-terracotta-800 bg-terracotta-100 px-3 py-1 rounded-full font-display">
               Location Zones
             </span>
           </div>
@@ -100,12 +100,12 @@ export const AdminAnalyticsPage = () => {
               return (
                 <div key={loc._id} className="space-y-1">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="font-semibold text-slate-800 truncate max-w-xs">{loc._id}</span>
-                    <span className="font-bold text-slate-900 font-mono">{loc.count} reports</span>
+                    <span className="font-semibold text-charcoal-800 truncate max-w-xs">{loc._id}</span>
+                    <span className="font-bold text-charcoal-900 font-mono">{loc.count} reports</span>
                   </div>
-                  <div className="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="w-full h-3 bg-cream-100 rounded-full overflow-hidden border border-biscuit-200/60">
                     <div
-                      className="h-full bg-gradient-to-r from-indigo-500 to-purple-400 rounded-full transition-all duration-700"
+                      className="h-full bg-gradient-to-r from-terracotta-600 to-amber-500 rounded-full transition-all duration-700 shadow-warm-sm"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
@@ -117,27 +117,27 @@ export const AdminAnalyticsPage = () => {
       </div>
 
       {/* Recovery KPIs Banner */}
-      <div className="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-8 rounded-3xl border border-slate-800 shadow-xl grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+      <div className="bg-gradient-to-br from-charcoal-950 via-charcoal-900 to-cocoa-950 text-cream-100 p-8 rounded-3xl border border-charcoal-800 shadow-warm-lg grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 block">
+          <span className="text-xs font-bold uppercase tracking-wider text-terracotta-300 block font-display">
             Algorithmic Matching Precision
           </span>
-          <div className="text-4xl font-black text-emerald-400 font-mono mt-2">96.2%</div>
-          <p className="text-xs text-slate-400 mt-1">Multi-factor correlation accuracy</p>
+          <div className="text-4xl font-black text-olive-300 font-mono mt-2 font-display">96.2%</div>
+          <p className="text-xs text-cocoa-300 mt-1">Multi-factor correlation accuracy</p>
         </div>
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 block">
+          <span className="text-xs font-bold uppercase tracking-wider text-terracotta-300 block font-display">
             Verification Protocol Success
           </span>
-          <div className="text-4xl font-black text-teal-400 font-mono mt-2">91.5%</div>
-          <p className="text-xs text-slate-400 mt-1">Legitimate ownership confirmation</p>
+          <div className="text-4xl font-black text-amber-300 font-mono mt-2 font-display">91.5%</div>
+          <p className="text-xs text-cocoa-300 mt-1">Legitimate ownership confirmation</p>
         </div>
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-300 block">
+          <span className="text-xs font-bold uppercase tracking-wider text-terracotta-300 block font-display">
             Dispute Resolution SLA
           </span>
-          <div className="text-4xl font-black text-purple-400 font-mono mt-2">&lt; 24h</div>
-          <p className="text-xs text-slate-400 mt-1">Average administrative turnaround</p>
+          <div className="text-4xl font-black text-terracotta-300 font-mono mt-2 font-display">&lt; 24h</div>
+          <p className="text-xs text-cocoa-300 mt-1">Average administrative turnaround</p>
         </div>
       </div>
     </div>

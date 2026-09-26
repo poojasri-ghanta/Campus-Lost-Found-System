@@ -10,7 +10,7 @@ export const MainLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
+    <div className="min-h-screen bg-cream-100 flex flex-col selection:bg-terracotta-500 selection:text-white">
       <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex-1 flex overflow-hidden">
         {isAuthenticated && (
@@ -24,3 +24,4 @@ export const MainLayout = () => {
     </div>
   );
 };
+

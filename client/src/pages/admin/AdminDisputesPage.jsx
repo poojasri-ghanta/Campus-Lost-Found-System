@@ -34,15 +34,15 @@ export const AdminDisputesPage = () => {
   return (
     <div className="space-y-6 pb-12">
       <div>
-        <div className="flex items-center gap-2">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+        <div className="flex items-center gap-2.5 mb-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
             Multi-Claimant Dispute Resolution
           </h1>
-          <span className="px-2.5 py-0.5 rounded-full bg-red-100 text-red-800 text-xs font-bold animate-pulse">
+          <span className="px-3 py-0.5 rounded-full bg-rust-100 text-rust-800 text-xs font-bold border border-rust-200/80 font-display animate-pulse">
             Priority Review
           </span>
         </div>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-cocoa-600">
           Items with multiple competing ownership claims requiring administrative adjudication
         </p>
       </div>
@@ -64,19 +64,19 @@ export const AdminDisputesPage = () => {
             return (
               <div
                 key={item._id}
-                className="bg-white rounded-3xl border border-red-200 p-6 sm:p-8 shadow-soft space-y-6"
+                className="bg-cream-50 rounded-3xl border border-rust-200/80 p-6 sm:p-8 shadow-warm space-y-6"
               >
                 {/* Dispute Header */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-biscuit-200/70">
                   <div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="px-2.5 py-0.5 rounded-md bg-red-100 text-red-700 text-xs font-bold uppercase">
+                      <span className="px-2.5 py-0.5 rounded-md bg-rust-100 text-rust-800 text-xs font-bold uppercase font-display">
                         {claims.length} Competing Claims
                       </span>
                       <StatusBadge status={item.status} type="item" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
-                    <p className="text-xs text-slate-500 mt-0.5">
+                    <h3 className="text-xl font-bold text-charcoal-900 font-display">{item.title}</h3>
+                    <p className="text-xs text-cocoa-600 mt-0.5 font-medium">
                       Location: {item.location} • Found Date: {formatDate(item.foundDate)}
                     </p>
                   </div>
@@ -85,6 +85,7 @@ export const AdminDisputesPage = () => {
                     variant="danger"
                     size="md"
                     onClick={() => setSelectedDispute({ item, claims })}
+                    className="shadow-warm-sm"
                   >
                     <Trophy className="w-4 h-4" />
                     Open Side-by-Side Adjudication
@@ -96,23 +97,23 @@ export const AdminDisputesPage = () => {
                   {claims.map((c, i) => (
                     <div
                       key={c._id}
-                      className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2 text-xs"
+                      className="p-4 rounded-2xl bg-cream-100/60 border border-biscuit-200/80 space-y-2 text-xs"
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div>
-                          <strong className="text-slate-900 block">{c.claimantId?.name}</strong>
-                          <span className="text-[11px] text-slate-400">
+                          <strong className="text-charcoal-900 block font-display">{c.claimantId?.name}</strong>
+                          <span className="text-[11px] text-cocoa-500">
                             ID: {c.claimantId?.studentId || 'N/A'} • {c.claimantId?.department}
                           </span>
                         </div>
                         <ConfidenceBadge rating={c.confidenceRating} score={c.verificationScore} />
                       </div>
 
-                      <div className="p-2.5 rounded-lg bg-white border border-slate-200">
-                        <span className="text-[10px] text-slate-400 font-bold uppercase block">
+                      <div className="p-2.5 rounded-xl bg-cream-50 border border-biscuit-200/70">
+                        <span className="text-[10px] text-cocoa-500 font-bold uppercase block font-display">
                           Top Identifier Answer:
                         </span>
-                        <p className="text-slate-700 font-medium line-clamp-2 mt-0.5">
+                        <p className="text-charcoal-800 font-medium line-clamp-2 mt-0.5">
                           "{c.answers?.[0]?.claimantAnswer || 'No specific answer'}"
                         </p>
                       </div>

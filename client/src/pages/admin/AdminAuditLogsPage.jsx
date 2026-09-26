@@ -49,10 +49,10 @@ export const AdminAuditLogsPage = () => {
   return (
     <div className="space-y-6 pb-12">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+        <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
           Forensic Audit Trails
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-cocoa-600 mt-1">
           Immutable system log recording item creation, claim submissions, dispute adjudications, and PIN handovers ({totalCount} entries)
         </p>
       </div>
@@ -65,7 +65,7 @@ export const AdminAuditLogsPage = () => {
             placeholder="Search by user email, action name, or entity ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-soft"
+            className="w-full px-4 py-2.5 bg-cream-50 border border-biscuit-200 rounded-2xl text-xs focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none shadow-warm text-charcoal-900 placeholder:text-cocoa-400"
           />
         </form>
 
@@ -75,7 +75,7 @@ export const AdminAuditLogsPage = () => {
             setEntityType(e.target.value);
             setPage(1);
           }}
-          className="px-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-xs font-semibold focus:outline-none shadow-soft"
+          className="px-4 py-2.5 bg-cream-50 border border-biscuit-200 rounded-2xl text-xs font-semibold focus:outline-none shadow-warm text-charcoal-900 font-display"
         >
           <option value="ALL">All Entity Types</option>
           <option value="USER">USER</option>
@@ -91,10 +91,10 @@ export const AdminAuditLogsPage = () => {
       {loading ? (
         <LoadingSpinner label="Loading audit trail records..." />
       ) : (
-        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-soft overflow-hidden">
+        <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 shadow-warm overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-600">
-              <thead className="bg-slate-50 border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
+            <table className="w-full text-left text-xs text-cocoa-700">
+              <thead className="bg-cream-100/70 border-b border-biscuit-200/80 text-cocoa-500 font-bold uppercase tracking-wider text-[10px] font-display">
                 <tr>
                   <th className="px-6 py-4">Timestamp</th>
                   <th className="px-6 py-4">Actor</th>
@@ -103,29 +103,29 @@ export const AdminAuditLogsPage = () => {
                   <th className="px-6 py-4">Metadata</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-biscuit-200/60">
                 {logs.map((log) => (
-                  <tr key={log._id} className="hover:bg-slate-50/60 transition">
-                    <td className="px-6 py-4 whitespace-nowrap text-slate-400 font-mono text-[11px]">
+                  <tr key={log._id} className="hover:bg-cream-100/50 transition">
+                    <td className="px-6 py-4 whitespace-nowrap text-cocoa-400 font-mono text-[11px]">
                       {formatDateTime(log.createdAt)}
                     </td>
                     <td className="px-6 py-4">
-                      <strong className="text-slate-900 block font-semibold">{log.userEmail}</strong>
+                      <strong className="text-charcoal-900 block font-semibold">{log.userEmail}</strong>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-2.5 py-1 rounded-lg bg-indigo-50 text-indigo-700 font-bold font-mono text-[11px] border border-indigo-100">
+                      <span className="px-2.5 py-1 rounded-xl bg-terracotta-100 text-terracotta-800 font-bold font-mono text-[11px] border border-terracotta-200">
                         {log.action}
                       </span>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-slate-800 font-medium">{log.entityType}</span>
+                      <span className="text-charcoal-900 font-medium">{log.entityType}</span>
                       {log.entityId && (
-                        <span className="text-[10px] text-slate-400 block font-mono">
+                        <span className="text-[10px] text-cocoa-400 block font-mono">
                           ID: {log.entityId.substring(0, 10)}...
                         </span>
                       )}
                     </td>
-                    <td className="px-6 py-4 max-w-xs truncate text-[11px] font-mono text-slate-500">
+                    <td className="px-6 py-4 max-w-xs truncate text-[11px] font-mono text-cocoa-500">
                       {JSON.stringify(log.metadata || {})}
                     </td>
                   </tr>
@@ -134,7 +134,7 @@ export const AdminAuditLogsPage = () => {
             </table>
           </div>
 
-          <div className="p-4 border-t border-slate-100">
+          <div className="p-4 border-t border-biscuit-200/70">
             <Pagination
               currentPage={page}
               totalPages={totalPages}

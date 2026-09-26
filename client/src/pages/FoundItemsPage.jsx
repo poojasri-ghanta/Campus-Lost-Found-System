@@ -65,26 +65,26 @@ export const FoundItemsPage = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-12">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+          <div className="flex items-center gap-2.5 mb-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
               Found Items Registry
             </h1>
-            <span className="inline-flex items-center gap-1 text-[10px] font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full border border-indigo-200">
-              <Lock className="w-3 h-3 text-indigo-600" /> Progressive Security Active
+            <span className="inline-flex items-center gap-1.5 text-[11px] font-bold bg-terracotta-100 text-terracotta-800 px-3 py-1 rounded-full border border-terracotta-200/80 font-display">
+              <Lock className="w-3 h-3 text-terracotta-600" /> Progressive Security Active
             </span>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500">
+          <p className="text-xs sm:text-sm text-cocoa-600">
             Browse discovered items across campus ({totalCount} total items). Private details are
             concealed until ownership verification.
           </p>
         </div>
 
         <Link to="/found-items/report">
-          <Button variant="accent" size="md">
+          <Button variant="accent" size="md" className="shadow-warm">
             <PlusCircle className="w-4 h-4" />
             Report Found Item
           </Button>

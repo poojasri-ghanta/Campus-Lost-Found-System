@@ -65,20 +65,20 @@ export const LostItemsPage = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-12">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+          <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
             Lost Items Registry
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-cocoa-600 mt-1">
             Browse reports submitted by campus students and faculty ({totalCount} total records)
           </p>
         </div>
 
         <Link to="/lost-items/report">
-          <Button variant="primary" size="md">
+          <Button variant="primary" size="md" className="shadow-warm">
             <PlusCircle className="w-4 h-4" />
             Report Lost Item
           </Button>

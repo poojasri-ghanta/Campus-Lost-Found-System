@@ -5,16 +5,16 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   if (totalPages <= 1) return null;
 
   return (
-    <div className="flex items-center justify-between px-4 py-3 sm:px-6 mt-6 bg-white rounded-2xl border border-slate-200/80 shadow-soft">
-      <div className="text-xs text-slate-500">
-        Showing page <span className="font-bold text-slate-700">{currentPage}</span> of{' '}
-        <span className="font-bold text-slate-700">{totalPages}</span>
+    <div className="flex items-center justify-between px-4 py-3 sm:px-6 mt-6 bg-white rounded-2xl border border-biscuit-200 shadow-soft">
+      <div className="text-xs text-cocoa-600">
+        Showing page <span className="font-bold text-cocoa-900">{currentPage}</span> of{' '}
+        <span className="font-bold text-cocoa-900">{totalPages}</span>
       </div>
       <div className="flex items-center gap-1.5">
         <button
           onClick={() => onPageChange(currentPage - 1)}
           disabled={currentPage === 1}
-          className="p-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+          className="p-2 rounded-xl border border-biscuit-300 text-cocoa-700 hover:bg-cream-100 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
@@ -26,14 +26,14 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             return (
               <React.Fragment key={page}>
                 {prev && page - prev > 1 && (
-                  <span className="px-2 text-xs text-slate-400">...</span>
+                  <span className="px-2 text-xs text-cocoa-400">...</span>
                 )}
                 <button
                   onClick={() => onPageChange(page)}
-                  className={`min-w-[32px] h-8 text-xs font-bold rounded-xl transition ${
+                  className={`min-w-[32px] h-8 text-xs font-bold rounded-xl transition cursor-pointer ${
                     currentPage === page
-                      ? 'bg-indigo-600 text-white shadow-sm shadow-indigo-200'
-                      : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
+                      ? 'bg-terracotta-600 text-white shadow-warm'
+                      : 'border border-biscuit-300 text-cocoa-700 hover:bg-cream-100'
                   }`}
                 >
                   {page}
@@ -45,7 +45,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
-          className="p-2 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed transition"
+          className="p-2 rounded-xl border border-biscuit-300 text-cocoa-700 hover:bg-cream-100 disabled:opacity-40 disabled:cursor-not-allowed transition cursor-pointer"
         >
           <ChevronRight className="w-4 h-4" />
         </button>
@@ -53,3 +53,4 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     </div>
   );
 };
+

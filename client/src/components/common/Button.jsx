@@ -11,27 +11,29 @@ export const Button = ({
   ...props
 }) => {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm active:scale-[0.98]';
+    'inline-flex items-center justify-center font-bold rounded-2xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.98] cursor-pointer';
 
   const variants = {
     primary:
-      'bg-indigo-600 hover:bg-indigo-700 text-white focus:ring-indigo-500 shadow-indigo-200 hover:shadow-indigo-300',
+      'bg-terracotta-600 hover:bg-terracotta-700 text-white focus:ring-terracotta-500 shadow-warm hover:shadow-glow',
     secondary:
-      'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 focus:ring-slate-300 hover:border-slate-300',
+      'bg-white hover:bg-cream-200 text-cocoa-800 border border-biscuit-300 focus:ring-biscuit-400 shadow-soft hover:border-biscuit-400',
     accent:
-      'bg-emerald-600 hover:bg-emerald-700 text-white focus:ring-emerald-500 shadow-emerald-200 hover:shadow-emerald-300',
+      'bg-olive-600 hover:bg-olive-700 text-white focus:ring-olive-500 shadow-sm hover:shadow-olive-glow',
     danger:
-      'bg-rose-600 hover:bg-rose-700 text-white focus:ring-rose-500 shadow-rose-200',
+      'bg-rust-600 hover:bg-rust-700 text-white focus:ring-rust-500 shadow-sm',
+    amber:
+      'bg-amber-500 hover:bg-amber-600 text-white focus:ring-amber-400 shadow-sm',
     ghost:
-      'bg-transparent hover:bg-slate-100 text-slate-600 hover:text-slate-900 shadow-none border-none',
+      'bg-transparent hover:bg-biscuit-100/70 text-cocoa-700 hover:text-cocoa-950 shadow-none border-none',
     dark:
-      'bg-slate-900 hover:bg-slate-800 text-white focus:ring-slate-700'
+      'bg-cocoa-900 hover:bg-cocoa-800 text-white focus:ring-cocoa-600 border border-cocoa-700 shadow-sm'
   };
 
   const sizes = {
-    sm: 'px-3 py-1.5 text-xs gap-1.5',
-    md: 'px-4 py-2.5 text-sm gap-2',
-    lg: 'px-6 py-3.5 text-base gap-2.5'
+    sm: 'px-3.5 py-1.5 text-xs gap-1.5',
+    md: 'px-4.5 py-2.5 text-xs sm:text-sm gap-2',
+    lg: 'px-6 py-3.5 text-sm sm:text-base gap-2.5'
   };
 
   return (
@@ -68,3 +70,4 @@ export const Button = ({
     </button>
   );
 };
+

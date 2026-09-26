@@ -13,31 +13,31 @@ export const FilterPanel = ({
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/80 p-5 shadow-soft space-y-4">
-      <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-        <div className="flex items-center gap-2 text-sm font-bold text-slate-800">
-          <Filter className="w-4 h-4 text-indigo-600" />
-          <span>Filters & Categories</span>
+    <div className="bg-white rounded-3xl border border-biscuit-200 p-5 sm:p-6 shadow-soft space-y-4">
+      <div className="flex items-center justify-between pb-3 border-b border-biscuit-100">
+        <div className="flex items-center gap-2 text-xs font-bold text-cocoa-900 uppercase tracking-wider">
+          <Filter className="w-4 h-4 text-terracotta-600" />
+          <span>Filters & Category Screening</span>
         </div>
         <button
           onClick={onReset}
-          className="text-xs text-slate-400 hover:text-indigo-600 flex items-center gap-1 font-medium transition"
+          className="text-xs text-cocoa-400 hover:text-terracotta-600 flex items-center gap-1 font-bold transition cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          Reset
+          Reset Filters
         </button>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Category */}
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+          <label className="block text-xs font-bold text-cocoa-800 mb-1.5">
             Category
           </label>
           <select
             value={filters.category || 'ALL'}
             onChange={(e) => handleChange('category', e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            className="w-full px-3.5 py-2.5 text-xs bg-cream-100 border border-biscuit-200 rounded-2xl text-cocoa-900 focus:ring-2 focus:ring-terracotta-500 focus:outline-none"
           >
             <option value="ALL">All Categories</option>
             {ITEM_CATEGORIES.map((cat) => (
@@ -50,13 +50,13 @@ export const FilterPanel = ({
 
         {/* Location */}
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+          <label className="block text-xs font-bold text-cocoa-800 mb-1.5">
             Campus Location
           </label>
           <select
             value={filters.location || 'ALL'}
             onChange={(e) => handleChange('location', e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            className="w-full px-3.5 py-2.5 text-xs bg-cream-100 border border-biscuit-200 rounded-2xl text-cocoa-900 focus:ring-2 focus:ring-terracotta-500 focus:outline-none"
           >
             <option value="ALL">All Campus Zones</option>
             {CAMPUS_LOCATIONS.map((loc) => (
@@ -69,27 +69,27 @@ export const FilterPanel = ({
 
         {/* Color */}
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            Color
+          <label className="block text-xs font-bold text-cocoa-800 mb-1.5">
+            Item Color
           </label>
           <input
             type="text"
             placeholder="e.g. Black, Silver, Brown"
             value={filters.color || ''}
             onChange={(e) => handleChange('color', e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            className="w-full px-3.5 py-2.5 text-xs bg-cream-100 border border-biscuit-200 rounded-2xl text-cocoa-900 placeholder-cocoa-400 focus:ring-2 focus:ring-terracotta-500 focus:outline-none"
           />
         </div>
 
         {/* Status */}
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-            Item Status
+          <label className="block text-xs font-bold text-cocoa-800 mb-1.5">
+            Registry Status
           </label>
           <select
             value={filters.status || 'ALL'}
             onChange={(e) => handleChange('status', e.target.value)}
-            className="w-full px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            className="w-full px-3.5 py-2.5 text-xs bg-cream-100 border border-biscuit-200 rounded-2xl text-cocoa-900 focus:ring-2 focus:ring-terracotta-500 focus:outline-none"
           >
             <option value="ALL">All Statuses</option>
             {statuses.length > 0
@@ -115,3 +115,4 @@ export const FilterPanel = ({
     </div>
   );
 };
+

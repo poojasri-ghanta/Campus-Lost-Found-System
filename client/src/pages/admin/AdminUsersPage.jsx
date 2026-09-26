@@ -82,10 +82,10 @@ export const AdminUsersPage = () => {
   return (
     <div className="space-y-6 pb-12">
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+        <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
           User Account Governance
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-cocoa-600 mt-1">
           Manage campus students, reporting finders, role elevations, and account suspensions
         </p>
       </div>
@@ -98,7 +98,7 @@ export const AdminUsersPage = () => {
             placeholder="Search by name, email, student ID, department..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none shadow-soft"
+            className="w-full px-4 py-2.5 bg-cream-50 border border-biscuit-200 rounded-2xl text-xs focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none shadow-warm text-charcoal-900 placeholder:text-cocoa-400"
           />
         </form>
 
@@ -108,7 +108,7 @@ export const AdminUsersPage = () => {
             setRoleFilter(e.target.value);
             setPage(1);
           }}
-          className="px-4 py-2.5 bg-white border border-slate-200 rounded-2xl text-xs font-semibold focus:outline-none shadow-soft"
+          className="px-4 py-2.5 bg-cream-50 border border-biscuit-200 rounded-2xl text-xs font-semibold focus:outline-none shadow-warm text-charcoal-900 font-display"
         >
           <option value="ALL">All Roles</option>
           <option value="STUDENT">Student</option>
@@ -121,10 +121,10 @@ export const AdminUsersPage = () => {
       {loading ? (
         <LoadingSpinner label="Loading user registry..." />
       ) : (
-        <div className="bg-white rounded-3xl border border-slate-200/80 shadow-soft overflow-hidden">
+        <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 shadow-warm overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs text-slate-600">
-              <thead className="bg-slate-50 border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider text-[10px]">
+            <table className="w-full text-left text-xs text-cocoa-700">
+              <thead className="bg-cream-100/70 border-b border-biscuit-200/80 text-cocoa-500 font-bold uppercase tracking-wider text-[10px] font-display">
                 <tr>
                   <th className="px-6 py-4">User</th>
                   <th className="px-6 py-4">Department / ID</th>
@@ -134,9 +134,9 @@ export const AdminUsersPage = () => {
                   <th className="px-6 py-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-biscuit-200/60">
                 {users.map((u) => (
-                  <tr key={u._id} className="hover:bg-slate-50/60 transition">
+                  <tr key={u._id} className="hover:bg-cream-100/50 transition">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         <img
@@ -144,26 +144,26 @@ export const AdminUsersPage = () => {
                             u.profileImage ||
                             `https://ui-avatars.com/api/?name=${encodeURIComponent(
                               u.name
-                            )}&background=4f46e5&color=fff`
+                            )}&background=d96237&color=fff`
                           }
                           alt={u.name}
-                          className="w-8 h-8 rounded-xl object-cover border border-slate-200"
+                          className="w-8 h-8 rounded-xl object-cover border border-biscuit-200"
                         />
                         <div>
-                          <strong className="text-slate-900 block font-semibold">{u.name}</strong>
-                          <span className="text-[11px] text-slate-400">{u.email}</span>
+                          <strong className="text-charcoal-900 block font-semibold font-display">{u.name}</strong>
+                          <span className="text-[11px] text-cocoa-500">{u.email}</span>
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <span className="text-slate-800 font-medium block">{u.department}</span>
-                      <span className="text-[10px] text-slate-400 font-mono">{u.studentId || 'N/A'}</span>
+                      <span className="text-charcoal-900 font-medium block">{u.department}</span>
+                      <span className="text-[10px] text-cocoa-400 font-mono">{u.studentId || 'N/A'}</span>
                     </td>
                     <td className="px-6 py-4">
                       <select
                         value={u.role}
                         onChange={(e) => handleRoleChange(u._id, e.target.value)}
-                        className="px-2.5 py-1 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold focus:outline-none"
+                        className="px-2.5 py-1 bg-cream-100 border border-biscuit-200 rounded-lg text-xs font-bold focus:outline-none text-charcoal-900 font-display"
                       >
                         <option value="STUDENT">STUDENT</option>
                         <option value="FINDER">FINDER</option>
@@ -172,16 +172,16 @@ export const AdminUsersPage = () => {
                     </td>
                     <td className="px-6 py-4">
                       <span
-                        className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                        className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                           u.isActive
-                            ? 'bg-emerald-100 text-emerald-800'
-                            : 'bg-rose-100 text-rose-800'
+                            ? 'bg-olive-100 text-olive-800'
+                            : 'bg-rust-100 text-rust-800'
                         }`}
                       >
                         {u.isActive ? 'Active' : 'Suspended'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 text-slate-400">
+                    <td className="px-6 py-4 text-cocoa-500">
                       {formatDate(u.createdAt)}
                     </td>
                     <td className="px-6 py-4 text-right">
@@ -190,8 +190,8 @@ export const AdminUsersPage = () => {
                         onClick={() => toggleUserStatus(u)}
                         className={`px-3 py-1 rounded-xl text-xs font-bold transition ${
                           u.isActive
-                            ? 'text-rose-600 hover:bg-rose-50 border border-rose-200'
-                            : 'text-emerald-600 hover:bg-emerald-50 border border-emerald-200'
+                            ? 'text-rust-600 hover:bg-rust-50 border border-rust-200'
+                            : 'text-olive-700 hover:bg-olive-50 border border-olive-200'
                         }`}
                       >
                         {u.isActive ? 'Suspend' : 'Activate'}
@@ -203,7 +203,7 @@ export const AdminUsersPage = () => {
             </table>
           </div>
 
-          <div className="p-4 border-t border-slate-100">
+          <div className="p-4 border-t border-biscuit-200/70">
             <Pagination
               currentPage={page}
               totalPages={totalPages}

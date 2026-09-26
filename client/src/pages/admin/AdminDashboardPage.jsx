@@ -11,7 +11,9 @@ import {
   TrendingUp,
   Clock,
   ArrowRight,
-  BarChart3
+  BarChart3,
+  ShieldCheck,
+  Sparkles
 } from 'lucide-react';
 import { LoadingSpinner } from '../../components/common/LoadingSpinner';
 import { Button } from '../../components/common/Button';
@@ -50,22 +52,22 @@ export const AdminDashboardPage = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+          <div className="flex items-center gap-2.5 mb-1">
+            <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
               Administrative Control Hub
             </h1>
-            <span className="px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 text-xs font-bold uppercase tracking-wider">
+            <span className="px-3 py-0.5 rounded-full bg-rust-100 text-rust-800 text-xs font-bold uppercase tracking-wider border border-rust-200/80 font-display">
               Campus Security
             </span>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-cocoa-600">
             System governance, dispute resolution workbench, forensic audit trails, and recovery KPIs
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <Link to="/admin/disputes">
-            <Button variant="danger" size="sm">
+            <Button variant="danger" size="sm" className="shadow-warm-sm">
               <AlertOctagon className="w-4 h-4" />
               Disputes ({stats?.disputedItems || 0})
             </Button>
@@ -81,56 +83,56 @@ export const AdminDashboardPage = () => {
 
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+        <div className="bg-cream-50 p-5 rounded-3xl border border-biscuit-200/80 shadow-warm card-hover-lift">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-cocoa-500 block mb-1 font-display">
             Total Users
           </span>
-          <div className="text-2xl font-black text-slate-900 font-mono">{stats?.totalUsers || 0}</div>
-          <Link to="/admin/users" className="text-[11px] text-indigo-600 font-bold hover:underline mt-1 block">
+          <div className="text-2xl font-black text-charcoal-900 font-mono font-display">{stats?.totalUsers || 0}</div>
+          <Link to="/admin/users" className="text-[11px] text-terracotta-600 font-bold hover:underline mt-1 block">
             Manage users →
           </Link>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+        <div className="bg-cream-50 p-5 rounded-3xl border border-biscuit-200/80 shadow-warm card-hover-lift">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-cocoa-500 block mb-1 font-display">
             Lost Reports
           </span>
-          <div className="text-2xl font-black text-indigo-600 font-mono">{stats?.totalLostItems || 0}</div>
-          <span className="text-[11px] text-slate-400 block mt-1">Active cases</span>
+          <div className="text-2xl font-black text-terracotta-600 font-mono font-display">{stats?.totalLostItems || 0}</div>
+          <span className="text-[11px] text-cocoa-400 block mt-1">Active cases</span>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+        <div className="bg-cream-50 p-5 rounded-3xl border border-biscuit-200/80 shadow-warm card-hover-lift">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-cocoa-500 block mb-1 font-display">
             Found Items
           </span>
-          <div className="text-2xl font-black text-emerald-600 font-mono">{stats?.totalFoundItems || 0}</div>
-          <span className="text-[11px] text-slate-400 block mt-1">Registered</span>
+          <div className="text-2xl font-black text-olive-700 font-mono font-display">{stats?.totalFoundItems || 0}</div>
+          <span className="text-[11px] text-cocoa-400 block mt-1">Registered</span>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+        <div className="bg-cream-50 p-5 rounded-3xl border border-biscuit-200/80 shadow-warm card-hover-lift">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-cocoa-500 block mb-1 font-display">
             Active Claims
           </span>
-          <div className="text-2xl font-black text-purple-600 font-mono">{stats?.activeClaims || 0}</div>
-          <span className="text-[11px] text-slate-400 block mt-1">Under verification</span>
+          <div className="text-2xl font-black text-amber-700 font-mono font-display">{stats?.activeClaims || 0}</div>
+          <span className="text-[11px] text-cocoa-400 block mt-1">Under verification</span>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+        <div className="bg-cream-50 p-5 rounded-3xl border border-biscuit-200/80 shadow-warm card-hover-lift">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-cocoa-500 block mb-1 font-display">
             Disputed Items
           </span>
-          <div className="text-2xl font-black text-rose-600 font-mono">{stats?.disputedItems || 0}</div>
-          <Link to="/admin/disputes" className="text-[11px] text-rose-600 font-bold hover:underline mt-1 block">
+          <div className="text-2xl font-black text-rust-600 font-mono font-display">{stats?.disputedItems || 0}</div>
+          <Link to="/admin/disputes" className="text-[11px] text-rust-600 font-bold hover:underline mt-1 block">
             Resolve now →
           </Link>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-soft">
-          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+        <div className="bg-cream-50 p-5 rounded-3xl border border-biscuit-200/80 shadow-warm card-hover-lift">
+          <span className="text-[11px] font-bold uppercase tracking-wider text-cocoa-500 block mb-1 font-display">
             Recovery Rate
           </span>
-          <div className="text-2xl font-black text-teal-600 font-mono">{stats?.recoveryRate || 0}%</div>
-          <span className="text-[11px] text-teal-600 font-semibold block mt-1">Success target</span>
+          <div className="text-2xl font-black text-olive-700 font-mono font-display">{stats?.recoveryRate || 0}%</div>
+          <span className="text-[11px] text-olive-700 font-semibold block mt-1">Success target</span>
         </div>
       </div>
 
@@ -138,16 +140,16 @@ export const AdminDashboardPage = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         <Link
           to="/admin/disputes"
-          className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft hover:shadow-card hover:border-rose-300 transition flex items-start gap-4 group"
+          className="p-6 rounded-3xl bg-cream-50 border border-biscuit-200/80 shadow-warm hover:shadow-warm-lg hover:border-rust-300 transition-all flex items-start gap-4 group card-hover-lift"
         >
-          <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-rust-100 text-rust-700 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-warm-sm">
             <AlertOctagon className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-900 group-hover:text-rose-600 transition-colors">
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-rust-700 transition-colors font-display">
               Dispute Workbench
             </h3>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-cocoa-600 mt-1">
               Compare conflicting claimant answers side-by-side and award rightful ownership.
             </p>
           </div>
@@ -155,16 +157,16 @@ export const AdminDashboardPage = () => {
 
         <Link
           to="/admin/users"
-          className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft hover:shadow-card hover:border-indigo-300 transition flex items-start gap-4 group"
+          className="p-6 rounded-3xl bg-cream-50 border border-biscuit-200/80 shadow-warm hover:shadow-warm-lg hover:border-terracotta-300 transition-all flex items-start gap-4 group card-hover-lift"
         >
-          <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-terracotta-100 text-terracotta-700 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-warm-sm">
             <Users className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-terracotta-700 transition-colors font-display">
               User Governance
             </h3>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-cocoa-600 mt-1">
               Manage accounts, student credentials, role permissions, and suspensions.
             </p>
           </div>
@@ -172,16 +174,16 @@ export const AdminDashboardPage = () => {
 
         <Link
           to="/admin/audit-logs"
-          className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft hover:shadow-card hover:border-emerald-300 transition flex items-start gap-4 group"
+          className="p-6 rounded-3xl bg-cream-50 border border-biscuit-200/80 shadow-warm hover:shadow-warm-lg hover:border-olive-300 transition-all flex items-start gap-4 group card-hover-lift"
         >
-          <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-olive-100 text-olive-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-warm-sm">
             <FileText className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-olive-800 transition-colors font-display">
               Forensic Audit Logs
             </h3>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-cocoa-600 mt-1">
               Review timestamped audit trails of report submissions, claim decisions, and handovers.
             </p>
           </div>
@@ -189,16 +191,16 @@ export const AdminDashboardPage = () => {
 
         <Link
           to="/admin/analytics"
-          className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-soft hover:shadow-card hover:border-purple-300 transition flex items-start gap-4 group"
+          className="p-6 rounded-3xl bg-cream-50 border border-biscuit-200/80 shadow-warm hover:shadow-warm-lg hover:border-amber-300 transition-all flex items-start gap-4 group card-hover-lift"
         >
-          <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-warm-sm">
             <BarChart3 className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+            <h3 className="text-sm font-bold text-charcoal-900 group-hover:text-amber-800 transition-colors font-display">
               Campus Analytics
             </h3>
-            <p className="text-xs text-slate-500 mt-1">
+            <p className="text-xs text-cocoa-600 mt-1">
               Inspect item loss hotspots, category distributions, and monthly recovery trends.
             </p>
           </div>
@@ -206,28 +208,28 @@ export const AdminDashboardPage = () => {
       </div>
 
       {/* Live System Activity Feed */}
-      <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-soft space-y-4">
-        <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-          <h3 className="text-base font-bold text-slate-900 font-heading flex items-center gap-2">
-            <Clock className="w-4 h-4 text-indigo-600" />
+      <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-6 shadow-warm space-y-4">
+        <div className="flex items-center justify-between pb-3 border-b border-biscuit-200/70">
+          <h3 className="text-base font-bold text-charcoal-900 font-display flex items-center gap-2">
+            <Clock className="w-4 h-4 text-terracotta-600" />
             Recent Administrative Activity Log
           </h3>
-          <Link to="/admin/audit-logs" className="text-xs font-bold text-indigo-600 hover:text-indigo-800">
+          <Link to="/admin/audit-logs" className="text-xs font-bold text-terracotta-600 hover:text-terracotta-800 font-display">
             View All Logs →
           </Link>
         </div>
 
-        <div className="divide-y divide-slate-100">
+        <div className="divide-y divide-biscuit-200/60">
           {recentActivity.map((log) => (
             <div key={log._id} className="py-3 flex items-center justify-between text-xs">
               <div>
-                <span className="font-bold text-slate-900">{log.action}</span>
-                <span className="text-slate-400 mx-2">•</span>
-                <span className="text-slate-500">By {log.userEmail}</span>
-                <span className="text-slate-400 mx-2">•</span>
-                <span className="text-slate-400 font-mono">Type: {log.entityType}</span>
+                <span className="font-bold text-charcoal-900 font-medium">{log.action}</span>
+                <span className="text-biscuit-400 mx-2">•</span>
+                <span className="text-cocoa-600">By {log.userEmail}</span>
+                <span className="text-biscuit-400 mx-2">•</span>
+                <span className="text-cocoa-500 font-mono text-[11px]">Type: {log.entityType}</span>
               </div>
-              <span className="text-slate-400 text-[11px] font-mono">
+              <span className="text-cocoa-400 text-[11px] font-mono">
                 {formatDateTime(log.createdAt)}
               </span>
             </div>

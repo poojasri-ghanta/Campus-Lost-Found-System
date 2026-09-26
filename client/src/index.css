@@ -5,53 +5,72 @@
 @layer base {
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #FAF7F2;
+    color: #2C2522;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', 'Inter', sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
-/* Custom scrollbars */
+/* Custom warm scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #F5EFE6;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #DFCFB8;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #BEA886;
 }
 
-/* Glassmorphism helpers */
+/* Warm Glassmorphism & Surface helpers */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  border: 1px solid rgba(223, 207, 184, 0.5);
+}
+
+.glass-warm {
+  background: rgba(250, 246, 240, 0.90);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(223, 207, 184, 0.7);
 }
 
 .glass-dark {
-  background: rgba(15, 23, 42, 0.88);
+  background: rgba(33, 28, 25, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(51, 65, 85, 0.5);
+  border: 1px solid rgba(84, 63, 50, 0.5);
 }
 
-/* Animations */
-@keyframes pulseGlow {
+/* Warm Animations */
+@keyframes pulseWarm {
   0%, 100% {
-    box-shadow: 0 0 15px rgba(79, 70, 229, 0.3);
+    box-shadow: 0 0 15px rgba(205, 92, 56, 0.25);
   }
   50% {
-    box-shadow: 0 0 25px rgba(79, 70, 229, 0.6);
+    box-shadow: 0 0 28px rgba(205, 92, 56, 0.55);
   }
 }
 
-.pulse-glow {
-  animation: pulseGlow 2.5s infinite;
+.pulse-warm {
+  animation: pulseWarm 2.5s infinite;
+}
+
+/* Subtle 3D card tilt & hover elevation */
+.card-hover-lift {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.card-hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 28px -4px rgba(65, 48, 37, 0.12);
 }

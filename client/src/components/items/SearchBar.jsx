@@ -18,7 +18,7 @@ export const SearchBar = ({ value, onChange, onSearch, placeholder = 'Search by 
   return (
     <form onSubmit={handleSubmit} className="relative w-full">
       <div className="relative flex items-center">
-        <Search className="absolute left-4 w-5 h-5 text-slate-400 pointer-events-none" />
+        <Search className="absolute left-4 w-5 h-5 text-cocoa-400 pointer-events-none" />
         <input
           type="text"
           value={query}
@@ -27,13 +27,13 @@ export const SearchBar = ({ value, onChange, onSearch, placeholder = 'Search by 
             if (onChange) onChange(e.target.value);
           }}
           placeholder={placeholder}
-          className="w-full pl-11 pr-10 py-3 bg-white rounded-2xl border border-slate-200 text-sm placeholder-slate-400 shadow-soft focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
+          className="w-full pl-11 pr-10 py-3.5 bg-white rounded-3xl border border-biscuit-200 text-xs sm:text-sm text-cocoa-900 placeholder-cocoa-400 shadow-soft focus:outline-none focus:ring-2 focus:ring-terracotta-500 focus:border-terracotta-500 transition"
         />
         {query && (
           <button
             type="button"
             onClick={handleClear}
-            className="absolute right-3 p-1 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+            className="absolute right-3 p-1 rounded-xl text-cocoa-400 hover:text-cocoa-700 hover:bg-cream-200 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -42,3 +42,4 @@ export const SearchBar = ({ value, onChange, onSearch, placeholder = 'Search by 
     </form>
   );
 };
+

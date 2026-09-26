@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Clock, MapPin, ShieldCheck } from 'lucide-react';
+import { Calendar, Clock, MapPin, ShieldCheck, Sparkles } from 'lucide-react';
 import { Modal } from '../common/Modal';
 import { Button } from '../common/Button';
 import { CAMPUS_LOCATIONS } from '../../utils/constants';
@@ -56,14 +56,14 @@ export const HandoverScheduleModal = ({
       isOpen={isOpen}
       onClose={onClose}
       title="Schedule Physical Item Handover"
-      subtitle="Arrange a secure campus meeting location and time with the verified owner"
+      subtitle="Arrange a secure campus meetup location and time with the verified owner"
       maxWidth="max-w-xl"
     >
       <form onSubmit={handleSubmit} className="space-y-4 py-2">
-        <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-100 text-xs text-indigo-900 flex items-start gap-2.5">
-          <ShieldCheck className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
-          <p className="leading-relaxed">
-            Upon scheduling, the system generates a unique <strong>6-digit verification code</strong>.
+        <div className="p-4 rounded-2xl bg-terracotta-50/70 border border-terracotta-200/80 text-xs text-charcoal-800 flex items-start gap-3 shadow-warm-sm">
+          <ShieldCheck className="w-5 h-5 text-terracotta-600 shrink-0 mt-0.5" />
+          <p className="leading-relaxed text-cocoa-700">
+            Upon scheduling, CampusFind generates a unique <strong className="text-charcoal-900 font-bold">6-digit verification code</strong>.
             During the physical meetup, the recipient provides this code to the finder to verify receipt
             and permanently close the case.
           </p>
@@ -71,14 +71,14 @@ export const HandoverScheduleModal = ({
 
         {/* Location selection */}
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-slate-400" />
+          <label className="block text-xs font-bold text-charcoal-800 mb-1.5 flex items-center gap-1.5 font-display">
+            <MapPin className="w-3.5 h-3.5 text-terracotta-500" />
             Recommended Secure Campus Meetup Location
           </label>
           <select
             value={location}
             onChange={(e) => setLocation(e.target.value)}
-            className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            className="w-full px-3.5 py-2.5 text-xs bg-cream-50 border border-biscuit-200 rounded-xl focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none transition text-charcoal-900 font-medium"
           >
             {CAMPUS_LOCATIONS.map((loc) => (
               <option key={loc} value={loc}>
@@ -93,7 +93,7 @@ export const HandoverScheduleModal = ({
               placeholder="Enter custom campus building / room..."
               value={customLocation}
               onChange={(e) => setCustomLocation(e.target.value)}
-              className="mt-2 w-full px-3.5 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="mt-2 w-full px-3.5 py-2 text-xs bg-cream-50 border border-biscuit-200 rounded-xl focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none transition text-charcoal-900"
             />
           )}
         </div>
@@ -101,8 +101,8 @@ export const HandoverScheduleModal = ({
         {/* Date & Time */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5 text-slate-400" />
+            <label className="block text-xs font-bold text-charcoal-800 mb-1.5 flex items-center gap-1.5 font-display">
+              <Calendar className="w-3.5 h-3.5 text-terracotta-500" />
               Scheduled Date
             </label>
             <input
@@ -111,13 +111,13 @@ export const HandoverScheduleModal = ({
               value={scheduledDate}
               min={new Date().toISOString().split('T')[0]}
               onChange={(e) => setScheduledDate(e.target.value)}
-              className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3.5 py-2.5 text-xs bg-cream-50 border border-biscuit-200 rounded-xl focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none transition text-charcoal-900 font-medium"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-slate-400" />
+            <label className="block text-xs font-bold text-charcoal-800 mb-1.5 flex items-center gap-1.5 font-display">
+              <Clock className="w-3.5 h-3.5 text-terracotta-500" />
               Scheduled Time Slot
             </label>
             <input
@@ -126,31 +126,32 @@ export const HandoverScheduleModal = ({
               placeholder="e.g. 2:30 PM"
               value={scheduledTime}
               onChange={(e) => setScheduledTime(e.target.value)}
-              className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              className="w-full px-3.5 py-2.5 text-xs bg-cream-50 border border-biscuit-200 rounded-xl focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none transition text-charcoal-900 font-medium"
             />
           </div>
         </div>
 
         {/* Instructions */}
         <div>
-          <label className="block text-xs font-bold text-slate-700 mb-1.5">
+          <label className="block text-xs font-bold text-charcoal-800 mb-1.5 font-display">
             Handover Instructions / Notes for Owner
           </label>
           <textarea
             rows={2}
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
-            className="w-full px-3.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            className="w-full px-3.5 py-2 text-xs bg-cream-50 border border-biscuit-200 rounded-xl focus:ring-2 focus:ring-terracotta-500/20 focus:border-terracotta-500 focus:outline-none transition text-charcoal-900 placeholder:text-cocoa-400"
           />
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-100">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-biscuit-200/70">
           <Button variant="secondary" type="button" onClick={onClose} disabled={submitting}>
             Cancel
           </Button>
-          <Button variant="accent" type="submit" loading={submitting}>
-            Confirm & Generate Verification PIN
+          <Button variant="primary" type="submit" loading={submitting}>
+            <Sparkles className="w-4 h-4" />
+            Confirm & Generate PIN
           </Button>
         </div>
       </form>

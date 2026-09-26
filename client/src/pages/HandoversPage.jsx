@@ -32,15 +32,15 @@ export const HandoversPage = () => {
   return (
     <div className="space-y-6 pb-12">
       <div>
-        <div className="flex items-center gap-2">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 font-heading">
+        <div className="flex items-center gap-2.5 mb-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-charcoal-900 font-display">
             Secure Item Handovers
           </h1>
-          <span className="px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-200">
+          <span className="px-3 py-0.5 rounded-full bg-terracotta-100 text-terracotta-800 text-xs font-bold border border-terracotta-200/80 font-display">
             6-Digit PIN Protocol
           </span>
         </div>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1">
+        <p className="text-xs sm:text-sm text-cocoa-600">
           Coordinate physical item meetups and enter mutual verification codes to permanently close cases
         </p>
       </div>

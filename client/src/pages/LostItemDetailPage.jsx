@@ -11,11 +11,14 @@ import {
   Edit,
   Tag,
   CheckCircle2,
-  RefreshCw
+  RefreshCw,
+  Compass
 } from 'lucide-react';
 import { StatusBadge, ConfidenceBadge } from '../components/common/Badge';
 import { Button } from '../components/common/Button';
 import { LoadingSpinner } from '../components/common/LoadingSpinner';
+import { Item3DIcon } from '../components/common/Item3DIcon';
+import { VerificationTimeline } from '../components/common/VerificationTimeline';
 import { formatDate } from '../utils/formatters';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
@@ -87,8 +90,8 @@ export const LostItemDetailPage = () => {
   if (!item) {
     return (
       <div className="text-center py-12">
-        <p className="text-sm text-slate-500">Report not found.</p>
-        <Link to="/lost-items" className="text-xs text-indigo-600 font-bold mt-2 inline-block">
+        <p className="text-sm text-cocoa-500">Report not found.</p>
+        <Link to="/lost-items" className="text-xs text-terracotta-600 font-bold mt-2 inline-block">
           ← Back to Lost Items
         </Link>
       </div>
@@ -103,7 +106,7 @@ export const LostItemDetailPage = () => {
       <div className="flex items-center justify-between">
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-slate-800 transition"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-cocoa-600 hover:text-charcoal-900 transition"
         >
           <ArrowLeft className="w-4 h-4" />
           Back
@@ -123,26 +126,36 @@ export const LostItemDetailPage = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left 2 Cols: Item Details */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 sm:p-8 shadow-soft space-y-6">
+          <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-6 sm:p-8 shadow-warm space-y-6">
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <StatusBadge status={item.status} type="item" />
-                <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                <span className="text-xs font-bold text-cocoa-500 uppercase tracking-wider font-display">
                   Category: {item.category}
                 </span>
               </div>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-cocoa-400">
                 Reported {formatDate(item.createdAt)}
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">
-              {item.title}
-            </h1>
+            <div className="flex items-start gap-4">
+              <Item3DIcon category={item.category} size="lg" />
+              <div>
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-charcoal-900 font-display">
+                  {item.title}
+                </h1>
+                <p className="text-xs text-cocoa-600 mt-1 flex items-center gap-2 font-medium">
+                  <span>📍 Lost near {item.location}</span>
+                  <span>•</span>
+                  <span>📅 {formatDate(item.lostDate)}</span>
+                </p>
+              </div>
+            </div>
 
             {/* Photo if present */}
             {item.image && (
-              <div className="rounded-2xl overflow-hidden aspect-[16/9] bg-slate-100 max-h-72">
+              <div className="rounded-2xl overflow-hidden aspect-[16/9] bg-cream-100 max-h-72 border border-biscuit-200/80 shadow-warm-sm">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -152,31 +165,31 @@ export const LostItemDetailPage = () => {
             )}
 
             {/* Key Specs Bar */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-slate-50 p-4 rounded-2xl border border-slate-100">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-cream-100/60 p-4 rounded-2xl border border-biscuit-200/80">
               <div>
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Primary Color</span>
-                <span className="font-bold text-slate-800">{item.color}</span>
+                <span className="text-cocoa-500 block text-[10px] uppercase font-bold font-display">Primary Color</span>
+                <span className="font-bold text-charcoal-900">{item.color}</span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Brand</span>
-                <span className="font-bold text-slate-800">{item.brand || 'Unspecified'}</span>
+                <span className="text-cocoa-500 block text-[10px] uppercase font-bold font-display">Brand</span>
+                <span className="font-bold text-charcoal-900">{item.brand || 'Unspecified'}</span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Lost Location</span>
-                <span className="font-bold text-slate-800 truncate block">{item.location}</span>
+                <span className="text-cocoa-500 block text-[10px] uppercase font-bold font-display">Lost Location</span>
+                <span className="font-bold text-charcoal-900 truncate block">{item.location}</span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Lost Date</span>
-                <span className="font-bold text-slate-800">{formatDate(item.lostDate)}</span>
+                <span className="text-cocoa-500 block text-[10px] uppercase font-bold font-display">Lost Date</span>
+                <span className="font-bold text-charcoal-900">{formatDate(item.lostDate)}</span>
               </div>
             </div>
 
             {/* Description */}
             <div className="space-y-2">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-cocoa-500 font-display">
                 Full Description & Details
               </h3>
-              <p className="text-sm text-slate-700 leading-relaxed whitespace-pre-line">
+              <p className="text-sm text-charcoal-800 leading-relaxed whitespace-pre-line">
                 {item.description}
               </p>
             </div>
@@ -187,9 +200,9 @@ export const LostItemDetailPage = () => {
                 {item.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg"
+                    className="inline-flex items-center gap-1 text-[11px] font-semibold text-cocoa-700 bg-biscuit-100 px-2.5 py-1 rounded-lg border border-biscuit-200/70"
                   >
-                    <Tag className="w-3 h-3 text-slate-400" />
+                    <Tag className="w-3 h-3 text-cocoa-400" />
                     {tag}
                   </span>
                 ))}
@@ -201,11 +214,11 @@ export const LostItemDetailPage = () => {
         {/* Right 1 Col: Matching Engine Widget & Reporter Card */}
         <div className="space-y-6">
           {/* Potential Matches Panel */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-6 shadow-soft space-y-4">
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+          <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-6 shadow-warm space-y-4">
+            <div className="flex items-center justify-between pb-3 border-b border-biscuit-200/70">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-amber-500" />
-                <h3 className="text-sm font-bold text-slate-900 font-heading">
+                <Sparkles className="w-5 h-5 text-amber-600" />
+                <h3 className="text-sm font-bold text-charcoal-900 font-display">
                   Algorithmic Matches
                 </h3>
               </div>
@@ -213,7 +226,7 @@ export const LostItemDetailPage = () => {
                 type="button"
                 onClick={handleRescan}
                 disabled={scanning}
-                className="text-xs text-indigo-600 hover:text-indigo-800 flex items-center gap-1 font-semibold disabled:opacity-50"
+                className="text-xs text-terracotta-600 hover:text-terracotta-800 flex items-center gap-1 font-semibold disabled:opacity-50 font-display"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${scanning ? 'animate-spin' : ''}`} />
                 Re-Scan
@@ -221,10 +234,10 @@ export const LostItemDetailPage = () => {
             </div>
 
             {matches.length === 0 ? (
-              <div className="text-center py-6 text-xs text-slate-400 space-y-2">
+              <div className="text-center py-6 text-xs text-cocoa-400 space-y-2">
                 <p>No high-confidence found items correlated yet.</p>
-                <p className="text-[11px] text-slate-400">
-                  Our background service monitors newly reported found items 24/7.
+                <p className="text-[11px] text-cocoa-400">
+                  Our background matching engine scans newly reported items 24/7.
                 </p>
               </div>
             ) : (
@@ -232,24 +245,24 @@ export const LostItemDetailPage = () => {
                 {matches.map((m) => (
                   <div
                     key={m._id}
-                    className="p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-amber-300 transition space-y-2"
+                    className="p-3.5 rounded-2xl bg-cream-100/60 border border-biscuit-200/80 hover:border-terracotta-300 transition space-y-2 card-hover-lift"
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <span className="text-xs font-bold text-slate-900 line-clamp-1">
+                      <span className="text-xs font-bold text-charcoal-900 line-clamp-1 font-display">
                         {m.foundItemId?.title || 'Found Item'}
                       </span>
-                      <span className="px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 text-[10px] font-black font-mono shrink-0">
+                      <span className="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[10px] font-black font-mono shrink-0">
                         {m.matchScore}%
                       </span>
                     </div>
 
-                    <div className="text-[11px] text-slate-500 space-y-0.5">
+                    <div className="text-[11px] text-cocoa-600 space-y-0.5">
                       <div className="flex items-center gap-1">
-                        <MapPin className="w-3 h-3 text-slate-400" />
+                        <MapPin className="w-3 h-3 text-terracotta-500" />
                         <span className="truncate">{m.foundItemId?.location}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3 text-slate-400" />
+                        <Calendar className="w-3 h-3 text-terracotta-500" />
                         <span>{formatDate(m.foundItemId?.foundDate)}</span>
                       </div>
                     </div>
@@ -266,8 +279,8 @@ export const LostItemDetailPage = () => {
           </div>
 
           {/* Reporter Profile */}
-          <div className="bg-white rounded-3xl border border-slate-200/80 p-5 shadow-soft space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+          <div className="bg-cream-50 rounded-3xl border border-biscuit-200/80 p-5 shadow-warm space-y-3">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-cocoa-500 font-display">
               Reported By
             </h4>
             <div className="flex items-center gap-3">
@@ -276,14 +289,14 @@ export const LostItemDetailPage = () => {
                   item.reportedBy?.profileImage ||
                   `https://ui-avatars.com/api/?name=${encodeURIComponent(
                     item.reportedBy?.name || 'User'
-                  )}&background=4f46e5&color=fff`
+                  )}&background=d96237&color=fff`
                 }
                 alt={item.reportedBy?.name}
-                className="w-10 h-10 rounded-xl object-cover border border-slate-200"
+                className="w-10 h-10 rounded-xl object-cover border border-biscuit-200 shadow-warm-sm"
               />
               <div className="min-w-0 flex-1 text-xs">
-                <span className="font-bold text-slate-900 block truncate">{item.reportedBy?.name}</span>
-                <span className="text-slate-500 block truncate">{item.reportedBy?.department}</span>
+                <span className="font-bold text-charcoal-900 block truncate font-display">{item.reportedBy?.name}</span>
+                <span className="text-cocoa-600 block truncate">{item.reportedBy?.department}</span>
               </div>
             </div>
           </div>
